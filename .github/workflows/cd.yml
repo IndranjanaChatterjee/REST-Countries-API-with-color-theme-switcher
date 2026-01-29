@@ -1,0 +1,50 @@
+name: Angular CD (Docker)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout repository code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2️⃣ Setup Node.js (Angular compatible)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 3️⃣ Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4️⃣ Build Angular app (sanity check for production)
+      # This ensures your app actually builds before Dockerizing
+      - name: Build Angular app
+        run: npm run build -- --configuration production
+
+      # 5️⃣ Build Docker image
+      - name: Build Docker image
+        run: |
+          docker build -t angular-rest-countries:latest .
+
+      # 6️⃣ (Optional) Login to Docker Hub
+      # Uncomment ONLY if you want to push images
+      # - name: Login to Docker Hub
+      #   uses: docker/login-action@v3
+      #   with:
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # 7️⃣ (Optional) Push Docker image
+      # - name: Push Docker image
+      #   run: |
+      #     docker tag angular-rest-countries:latest your-dockerhub-username/angular-rest-countries:latest
+      #     docker push your-dockerhub-username/angular-rest-countries:latest
