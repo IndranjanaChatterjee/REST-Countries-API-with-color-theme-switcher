@@ -15,7 +15,7 @@ describe('DetailedPage', () => {
           provide: ActivatedRoute,
           useValue: {
             paramMap: of({
-              get: (key: string) => 'IN', // mock country code
+              get: () => 'IN', // mock country code
             }),
           },
         },
