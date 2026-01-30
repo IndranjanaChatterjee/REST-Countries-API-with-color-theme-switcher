@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Country } from '../../models/country';
 import { CountryService } from '../../services/country-service';
 
@@ -10,9 +10,10 @@ import { CountryService } from '../../services/country-service';
 })
 export class MainSection {
   countries: Country[] = [];
-  isLoading: boolean = true;
+  isLoading = true;
 
-  constructor(private countryService: CountryService) {}
+  
+  private countryService = inject(CountryService);;
 
   ngOnInit() {
     this.countryService.getCountries().subscribe((data) => {
