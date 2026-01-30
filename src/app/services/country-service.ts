@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Country } from '../models/country';
 import { map } from 'rxjs';
 
@@ -7,8 +7,9 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class CountryService {
+  private http = inject(HttpClient);
+
   private url="data/data.json";
-  constructor(private http:HttpClient){}
   getCountries(){
     return this.http.get<Country[]>(this.url);
   }

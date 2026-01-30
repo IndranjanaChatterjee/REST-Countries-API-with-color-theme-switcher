@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Country } from '../../models/country';
 import { CountryService } from '../../services/country-service';
 
@@ -8,7 +8,7 @@ import { CountryService } from '../../services/country-service';
   templateUrl: './main-section.html',
   styleUrl: './main-section.css',
 })
-export class MainSection {
+export class MainSection implements OnInit {
   countries: Country[] = [];
   isLoading = true;
 
