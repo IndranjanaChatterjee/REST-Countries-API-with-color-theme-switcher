@@ -1,14 +1,20 @@
-<div class="bg-[#fafafa] flex justify-between items-center gap-10 flex-wrap  my-10 p-7 px-12">
+<app-header></app-header>
+<div class="bg-[#fafafa] flex justify-center md:justify-between items-center gap-10 flex-wrap my-10 p-7 px-12">
   @if (isLoading()) {
     <div>Loading...</div>
   } @else {
     @for (country of countries; track country.name) {
-      <div class="country-card bg-[#ffffff] shadow-md rounded-md p-4 w-[20rem]">
-        <img [src]="country.flags.png" alt="{{ country.name }} flag" class="country-flag" />
-        <h2>{{ country.name }}</h2>
-        <p><strong>Population:</strong> {{ country.population }}</p>
-        <p><strong>Region:</strong> {{ country.region }}</p>
-        <p><strong>Capital:</strong> {{ country.capital }}</p>
+      <div
+        class="country-card bg-[#ffffff] shadow-md rounded-md  w-[20rem] hover:cursor-pointer hover:scale-105 transition-transform duration-300 "
+        [routerLink]="['/detail', country.alpha2Code]"
+      >
+        <img [src]="country.flags.png" alt="{{ country.name }} flag" class="country-flag w-full h-50 object-cover rounded-t-md" />
+        <div class="px-7 py-4">
+        <h2 class="font-bold mb-2.5 text-[1.5rem]">{{ country.name }}</h2>
+        <p><span class="font-semibold">Population:</span> {{ country.population }}</p>
+        <p><span class="font-semibold">Region:</span> {{ country.region }}</p>
+        <p><span class="font-semibold">Capital:</span> {{ country.capital }}</p>
+        </div>
       </div>
     }
   }
