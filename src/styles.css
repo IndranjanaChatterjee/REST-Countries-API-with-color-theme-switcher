@@ -1,3 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+
+@import "tailwindcss";
+
+/* LIGHT THEME (default) */
+:root {
+  --bg: #fafafa;
+  --text: #111517;
+  --element: #ffffff;
+  --input: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* DARK THEME */
+.dark {
+  --bg: #202c37;
+  --text: #ffffff;
+  --element: #2b3945;
+  --input: #2b3945;
+  --shadow: rgba(0, 0, 0, 0.4);
+}
+
+/* GLOBAL APPLICATION */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+.bg-element {
+  background-color: var(--element);
+}
+
+.bg-input {
+  background-color: var(--input);
+}
+
+.text-theme {
+  color: var(--text);
+}
+
+.shadow-theme {
+  box-shadow: 0 2px 8px var(--shadow);
+}
