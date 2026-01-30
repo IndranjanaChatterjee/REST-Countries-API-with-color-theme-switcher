@@ -1,11 +1,11 @@
-<app-header></app-header>
-<div class="bg-[#fafafa] flex justify-center md:justify-between items-center gap-10 flex-wrap my-10 p-7 px-12">
+
+<div class=" flex justify-center md:justify-between items-center gap-10 flex-wrap my-10 p-7 px-12">
   @if (isLoading()) {
     <div>Loading...</div>
   } @else {
     @for (country of countries; track country.name) {
       <div
-        class="country-card bg-[#ffffff] shadow-md rounded-md  w-[20rem] hover:cursor-pointer hover:scale-105 transition-transform duration-300 "
+        class="bg-element shadow-theme text-theme country-card bg-[#ffffff] shadow-md rounded-md  w-[20rem] hover:cursor-pointer hover:scale-105 transition-transform duration-300 "
         [routerLink]="['/detail', country.alpha2Code]"
       >
         <img [src]="country.flags.png" alt="{{ country.name }} flag" class="country-flag w-full h-50 object-cover rounded-t-md" />

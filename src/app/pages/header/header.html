@@ -1,1 +1,21 @@
-<div class="fixed top-0 left-0 w-full z-50 bg-white shadow">header works!</div>
+<div class="top-0 left-0 w-full z-50 shadow">
+  <header class="flex justify-between items-center p-4 max-w-7xl mx-auto">
+    <h1 class="sm:text-3xl font-bold">Where in the world?</h1>
+
+    <button
+      type="button"
+      class="px-2 sm:px-4 py-2 rounded shadow inline-flex items-center gap-2 whitespace-nowrap hover:cursor-pointer shadow-theme"
+      (click)="toggleMode()"
+    >
+      <!-- use Angular expressions (mode() is a signal) -->
+      @if(mode() === 'Dark Mode') {
+        <i class="fa-regular fa-moon"></i>
+      } @else {
+        <i class="fa-regular fa-sun"></i>
+      }
+      <span>{{mode()}}</span>
+    </button>
+
+    
+  </header>
+</div>
