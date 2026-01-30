@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 import { DetailedPage } from './detailed-page';
 
 describe('DetailedPage', () => {
@@ -8,13 +9,22 @@ describe('DetailedPage', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DetailedPage]
-    })
-    .compileComponents();
+      imports: [DetailedPage],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: {
+            paramMap: of({
+              get: (key: string) => 'IN', // mock country code
+            }),
+          },
+        },
+      ],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DetailedPage);
     component = fixture.componentInstance;
-    await fixture.whenStable();
+    fixture.detectChanges();
   });
 
   it('should create', () => {
