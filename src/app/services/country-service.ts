@@ -1,24 +1,33 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Country } from '../models/country';
-import { map } from 'rxjs';
+import { map, tap,of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CountryService {
   private http = inject(HttpClient);
+  private countriesCache: Country[] | null = null;
 
   private url="data/data.json";
   getCountries(){
-    return this.http.get<Country[]>(this.url);
+    if (this.countriesCache) {
+    return of(this.countriesCache); // ← instant, no HTTP
   }
-
-
-  getCountryByAlpha2Code(alpha2Code:string){
     return this.http.get<Country[]>(this.url).pipe(
-      map(countries => countries.find(country => country.alpha2Code === alpha2Code))
+      tap((countries) => (this.countriesCache = countries))
     );
   }
+
+
+  getCountryByAlpha2Code(alpha2Code: string) {
+  return this.getCountries().pipe(
+    map(countries =>
+      countries.find(country => country.alpha2Code === alpha2Code)
+    )
+  );
+}
+
   
 }
