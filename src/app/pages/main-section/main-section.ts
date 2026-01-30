@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Country } from '../../models/country';
 import { CountryService } from '../../services/country-service';
 
@@ -10,7 +10,7 @@ import { CountryService } from '../../services/country-service';
 })
 export class MainSection implements OnInit {
   countries: Country[] = [];
-  isLoading = true;
+  isLoading = signal(true);
 
   
   private countryService = inject(CountryService);;
@@ -18,7 +18,7 @@ export class MainSection implements OnInit {
   ngOnInit() {
     this.countryService.getCountries().subscribe((data) => {
       this.countries = data;
-      this.isLoading = false;
+      this.isLoading.set(false);
       console.log(this.countries);
     });
   }
