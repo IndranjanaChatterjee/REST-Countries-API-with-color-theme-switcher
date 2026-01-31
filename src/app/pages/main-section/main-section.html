@@ -1,21 +1,55 @@
+<div>
+  <div class=" mx-12 flex flex-col justify-center gap-4 md:flex-row md:justify-between items-center">
+    
+  <div class="shadow-theme bg-element text-theme px-4 py-2 rounded md:w-76 focus:outline-none flex flex-row justify-between items-center gap-1.5 w-full ">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input
+      type="text"
+      placeholder="Search for a country..."
+      class="border-none bg-element text-theme w-full focus:outline-none ml-1.5 text-[0.8rem] py-1.5"
+      (input)="onSearch($event.target.value)"
+    />
+  </div>
 
-<div class=" flex justify-center md:justify-between items-center gap-10 flex-wrap my-10 p-7 px-12">
-  @if (isLoading()) {
-    <div>Loading...</div>
-  } @else {
-    @for (country of countries; track country.name) {
-      <div
-        class="bg-element shadow-theme text-theme country-card bg-[#ffffff] shadow-md rounded-md  w-[20rem] hover:cursor-pointer hover:scale-105 transition-transform duration-300 "
-        [routerLink]="['/detail', country.alpha2Code]"
+    <div class="bg-element text-theme shadow-theme px-4 py-2 rounded md:w-48 focus:outline-none flex flex-row justify-between items-center gap-1.5 w-full">
+      
+      <select
+        class="border-none bg-element text-theme w-full focus:outline-none  text-[0.8rem] py-1.5 hover:cursor-pointer"
+        
       >
-        <img [src]="country.flags.png" alt="{{ country.name }} flag" class="country-flag w-full h-50 object-cover rounded-t-md" />
-        <div class="px-7 py-4">
-        <h2 class="font-bold mb-2.5 text-[1.5rem]">{{ country.name }}</h2>
-        <p><span class="font-semibold">Population:</span> {{ country.population }}</p>
-        <p><span class="font-semibold">Region:</span> {{ country.region }}</p>
-        <p><span class="font-semibold">Capital:</span> {{ country.capital }}</p>
-        </div>
-      </div>
-    }
-  }
+        <option value="" disabled selected>Filter by Region</option>
+        <option value="Africa">Africa</option>
+        <option value="Americas">Americas</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europe</option>
+        <option value="Oceania">Oceania</option>
+      </select>
+    </div>
 </div>
+
+  <div class="flex justify-center  items-center gap-12 flex-wrap my-10 p-7 px-12">
+    @if (isLoading()) {
+      <div>Loading...</div>
+    } @else {
+      @for (country of filteredCountries(); track country.name) {
+        <div
+          class="bg-element shadow-theme text-theme country-card bg-[#ffffff] shadow-md rounded-md w-[20rem] hover:cursor-pointer hover:scale-105 transition-transform duration-300"
+          [routerLink]="['/detail', country.alpha2Code]"
+        >
+          <img
+            [src]="country.flags.png"
+            alt="{{ country.name }} flag"
+            class="country-flag w-full h-50 object-cover rounded-t-md"
+          />
+          <div class="px-7 py-4">
+            <h2 class="font-bold mb-2.5 text-[1.5rem]">{{ country.name }}</h2>
+            <p><span class="font-semibold">Population:</span> {{ country.population }}</p>
+            <p><span class="font-semibold">Region:</span> {{ country.region }}</p>
+            <p><span class="font-semibold">Capital:</span> {{ country.capital }}</p>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>
+
