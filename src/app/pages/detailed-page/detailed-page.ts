@@ -15,6 +15,7 @@ export class DetailedPage implements OnInit {
   private router=inject(Router);
   private countryService = inject(CountryService);
   isLoading = signal(true);
+  borderCountries = signal<string[]>(['NA']);
   ngOnInit() {  // Lifecycle hook that is called after data-bound properties of a directive are initialized
     const code = this.route.snapshot.paramMap.get('countryCode');  // Get the country code from the route parameters
     if(!code) return;
@@ -23,6 +24,11 @@ export class DetailedPage implements OnInit {
       {
         this.country = data;
         console.log(this.country);
+        if (this.country?.borders?.length) {
+        this.countryService
+          .getBorderCountryNames(this.country.borders)
+          .subscribe(names => this.borderCountries.set(names));
+      }
 
       }
       this.isLoading.set(false);
