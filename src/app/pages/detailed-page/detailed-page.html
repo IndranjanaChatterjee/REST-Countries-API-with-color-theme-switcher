@@ -1,29 +1,64 @@
 @if (isLoading()) {
   <div class="p-10">Loading country details...</div>
-}@else if (country) {
-    
-  <div class="p-10">
+} @else if (country) {
+  <div class="px-10 flex flex-col justify-start items-start ">
     <button
-      class="mb-6 px-4 py-2 shadow rounded shadow-theme bg-element text-theme hover:cursor-pointer"
+      class="mb-6 px-4 py-2 shadow rounded hover:cursor-pointer shadow-theme"
       (click)="goBack()"
     >
       ← Back
     </button>
 
-    <div class="flex gap-10">
-      <img
-        [src]="country.flags.svg"
-        alt="{{ country.name }}"
-        class="w-75"
-      />
+    <div class="flex flex-col lg:flex-row justify-center lg:justify-between items-start lg:items-center w-full md:mx-5 gap-12">
+      <img [src]="country.flags.svg" alt="{{ country.name }}" class="w-120" />
 
-      <div>
-        <h1 class="text-3xl font-bold mb-4">{{ country.name }}</h1>
-        <p><strong>Population:</strong> {{ country.population }}</p>
-        <p><strong>Region:</strong> {{ country.region }}</p>
-        <p><strong>Capital:</strong> {{ country.capital }}</p>
+      <div class="flex flex-col justify-between items-start w-full lg:w-[50%] lg:px-10 gap-2.5 ">
+        <h1 class="text-[1.5rem] lg:text-4xl font-bold mb-4">{{ country.name }}</h1>
+        <div class="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-0 lg:items-center w-full ">
+          <div class="flex flex-col justify-center items-start gap-1.5">
+            <p class="flex flex-row justify-center items-center gap-1 ">
+              <strong>Native Name:</strong> <span>{{ country.nativeName }}</span>
+            </p>
+            <p class="flex flex-row justify-center items-center gap-1 ">
+              <strong>Population:</strong> {{ country.population }}
+            </p>
+            <p class="flex flex-row justify-center items-center gap-1 ">
+              <strong>Region:</strong> {{ country.region }}
+            </p>
+            <p class="flex flex-row justify-center items-center gap-1 ">
+              <strong>Capital:</strong> {{ country.capital }}
+            </p>
+          </div>
+
+          <div class="flex flex-col justify-center items-start gap-1.5">
+            <p class="flex flex-row justify-center items-center gap-1 ">
+              <strong>Top Level Domain:</strong> <span>{{ country.topLevelDomain[0] }}</span>
+            </p>
+            <p class="flex flex-row justify-center items-center gap-1 ">
+              <strong>Currencies:</strong> <span>{{ country.currencies[0].name }}</span>
+            </p>
+            <p class="flex flex-row justify-center items-center gap-1 ">
+              <strong>Languages:</strong> <span>{{ country.languages[0].name }}</span>
+            </p>
+          </div>
+        </div>
+        <div class="mt-4">
+          <strong>Border Countries:</strong>
+          <div class="flex gap-3 justify-start items-center flex-wrap mt-2">
+            @if(borderCountries()!=null)
+            {
+            @for (border of borderCountries(); track border) {
+              <span class="px-4 py-2 s rounded text-sm shadow-theme">
+                {{ border }}
+              </span>
+            }
+          }
+          @else {
+            <div>NA</div>
+          }
+          </div>
+        </div>
       </div>
     </div>
   </div>
 }
-

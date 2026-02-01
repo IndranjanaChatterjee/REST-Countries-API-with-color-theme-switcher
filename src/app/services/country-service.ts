@@ -29,5 +29,17 @@ export class CountryService {
   );
 }
 
+getBorderCountryNames(borderCodes: string[]) {
+    return this.getCountries().pipe(
+      map(countries =>
+        borderCodes
+          .map(code =>
+            countries.find(c => c.alpha3Code === code)?.name
+          )
+          .filter((name): name is string => !!name)
+      )
+    );
+  }
+
   
 }
