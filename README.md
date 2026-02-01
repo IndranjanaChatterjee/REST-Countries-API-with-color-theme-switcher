@@ -1,59 +1,64 @@
-# RESTCountriesAPIWithColorThemeSwitcher
+# REST Countries API with color theme switcher solution
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.4.
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca).  
 
-## Development server
+## Table of contents
 
-To start a local development server, run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-```bash
-ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Overview
 
-## Code scaffolding
+### The challenge
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Users should be able to:
 
-```bash
-ng generate component component-name
-```
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode 
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Screenshot
 
-```bash
-ng generate --help
-```
+![](./public/Screenshot.png)
 
-## Building
 
-To build the project run:
 
-```bash
-ng build
-```
+### Links
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- Solution URL: [Add solution URL here](https://github.com/IndranjanaChatterjee/REST-Countries-API-with-color-theme-switcher)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-## Running unit tests
+## My process
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Built with
 
-```bash
-ng test
-```
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Mobile-first workflow
+- [Angular](https://angular.dev/)
+- [Docker](https://docs.docker.com/)
+- [Tailwind Css](https://tailwindcss.com/)
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
 
-```bash
-ng e2e
-```
+## Author
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Website - [Indranjana Chatterjee](https://www.indranjanachatterjee.me/)
+- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/IndranjanaChatterjee)
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
